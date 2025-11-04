@@ -21,6 +21,7 @@ gmon.txt
 /config.rpath
 /config.sub
 /configure
+/configure~
 /depcomp
 /install-sh
 /m4/*.m4

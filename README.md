@@ -10,6 +10,20 @@ Xnec2c now has a built-in editor for NEC2 input files which can be used to edit 
 
 See the documentation on the [Xnec2c website](https://www.xnec2c.org/).
 
+**Quick Start:**
+
+**Linux/BSD:**
+```bash
+./autogen.sh && ./configure && make && sudo make install
+```
+
+**macOS (Homebrew):**
+```bash
+brew install autoconf automake libtool pkg-config gettext gtk+3 glib openblas
+./build-macos.sh
+```
+Or see [INSTALL.MACOS.md](INSTALL.MACOS.md) for detailed instructions.
+
 **3\. Features:**
 *   **Multi-threading operation on SMP machines:**  
     Since version 1.0, xnec2c can run multi-threaded (by forking) on SMP machines, when executing a frequency loop. Multi-threading is enabled by using the -j<n> option, where n is the number of processors in a SMP machine. xnec2c will spawn n child processes, to which it will delegate calculation of frequency-dependent data for each frequency step. Thus data related to n frequency steps will be calculated concurrently and passed on the the parent process by pipes, to be further processed for graphical display. Child processes are spawned before GTK is initialized and started so that only the parent process is tied to the GUI interface. Thus there are n+1 processes running when the -j option is used and execution is faster by slightly less than n times. **Please note** that its pointless and counter-productive to specify a value of n greater than the number of steps in the frequency loop.
